@@ -41,19 +41,19 @@ export class RegisterComponent implements OnInit {
 
     if (values.repassword == values.password && Register.phoneNum.toString().length === 9) {
       alert(JSON.stringify(Register))
-      // this.networkUserservice.postRegister(Register).subscribe(
-      //   data => {
-      //     if (data.status == 'success') {
-      //       alert(`ลงทะเบียนเสร็จสื้้น`)
-      //       window.location.href = '/login'
-      //     } else {
-      //       alert(data.data)
-      //     }
-      //   },
-      //   error => {
-      //     alert(status)
-      //   }
-      // )
+      this.networkUserservice.postRegister(Register).subscribe(
+        data => {
+          if (data.status == 'success') {
+            alert(`ลงทะเบียนเสร็จสื้้น`)
+            window.location.href = '/login'
+          } else {
+            alert(data.data)
+          }
+        },
+        error => {
+          alert(status)
+        }
+      )
     } else if (Register.phoneNum.toString().length !== 9) {
       alert(`Phone Number Incorrect`)
     }
